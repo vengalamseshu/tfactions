@@ -7,6 +7,8 @@ on:
 
 jobs:
   plan:
+  name: terraform-plan
+  runs-on: ubuntu-latest
     steps:
       - name: checkout code
         uses: actions/checkout@v2
