@@ -1,0 +1,29 @@
+- name: s3-interface
+  service: s3
+  create: true
+  service_type: Interface
+  private_dns_enabled: false
+  attach_generic_security_group: true
+  attach_generic_policy: true
+  tags:
+    name: s3-vpc-endpoint
+
+- name: s3-gw
+  service: s3
+  create: true
+  service_type: Gateway
+  private_dns_enabled: false
+  attach_generic_security_group: false
+  attach_generic_policy: false
+  tags:
+    name: s3-vpc-endpoint
+
+- name: lambda-interface
+  service: lambda
+  service_type: Interface
+  create: true
+  private_dns_enabled: false
+  attach_generic_security_group: false
+  attach_generic_policy: false
+  tags:
+    name: lambda-vpc-endpoint
