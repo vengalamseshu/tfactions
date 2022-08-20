@@ -7,9 +7,9 @@ on:
 
 jobs:
   plan:
-  name: terraform-plan
-  runs-on: ubuntu-latest
-  steps:
+    name: terraform-plan
+    runs-on: ubuntu-latest
+    steps:
     - name: checkout code
       uses: actions/checkout@v2
     
@@ -25,21 +25,21 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-     - name: Initialize Terraform
-       run: terraform init -input=false    
+    - name: Initialize Terraform
+      run: terraform init -input=false    
     
-     - name: Plan Terraform
-       id: plan
-       continue-on-error: true
-       run: terraform plan -var-file values.tfvars -input=false -no-color
+    - name: Plan Terraform
+      id: plan
+      continue-on-error: true
+      run: terraform plan -var-file values.tfvars -input=false -no-color
     
-     - name: Post Plan to GitHub PR
-       uses: mshick/add-pr-comment@v1
-       with:
-         allow-repeats: true
-         repo-token: ${{ secrets.GITHUB_TOKEN }}
-         repo-token-user-login: 'github-actions[bot]'
-         message: |
-           ```
-           ${{ steps.plan.outputs.stdout || steps.plan.outputs.stderr }}
-           ```            
+    - name: Post Plan to GitHub PR
+      uses: mshick/add-pr-comment@v1
+      with:
+        allow-repeats: true
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token-user-login: 'github-actions[bot]'
+        message: |
+          ```
+          ${{ steps.plan.outputs.stdout || steps.plan.outputs.stderr }}
+          ```            
