@@ -1,4 +1,4 @@
-name: Terraform Workflow
+name: Terraform Plan Workflow 
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   plan:
-    name: terraform-plan
+    name: terraform_plan
     runs-on: ubuntu-latest
     steps:
     - name: checkout code
