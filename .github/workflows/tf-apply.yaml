@@ -2,8 +2,8 @@ name: Terraform Apply Workflow
 
 on:
   push:
-  branches:
-  - main
+    branches:
+    - main
 
 jobs:
   tfapply:
