@@ -4,7 +4,7 @@ region = "ap-south-1"
 
 number_of_azs = 3
 
-vpc_name = "supernovaone"
+vpc_name = "supernovatwo"
 
 vpc_cidr = "10.7.0.0/16"
 
